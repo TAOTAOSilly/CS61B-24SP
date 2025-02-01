@@ -6,7 +6,7 @@ public class JavaExercises {
     /** Returns an array [1, 2, 3, 4, 5, 6] */
     public static int[] makeDice() {
         // TODO: Fill in this function.
-        return new int[]{0,1,2,3,4,5,6};
+        return new int[]{1,2,3,4,5,6};
     }
 
     /** Returns the order depending on the customer.
@@ -33,11 +33,11 @@ public class JavaExercises {
         int max = array[0];
         int min = array[0];
         for (int i : array){
-            if (max < array[i]){
-                max = array[i];
+            if (max < i){
+                max = i;
             }
-            if (min > array[i]){
-                min = array[i];
+            if (min > i){
+                min = i;
             }
         }
         return max - min;
@@ -58,18 +58,15 @@ public class JavaExercises {
     private static List<Integer> hailstoneHelper(int x, List<Integer> list) {
         // TODO: Fill in this function.
         list.add(x);
+        if ( x == 1){
+            return list;
+        }
         if (x % 2 == 0){
-            x = x / 2;
+            return hailstoneHelper(x/2,list);
         }
-        //even
-        if (x % 2 == 1){
-            x = x * 3 + 1;
+        else {
+            return hailstoneHelper(x * 3 + 1,list);
         }
-        //recursion
-        if (x != 1) {
-            hailstoneHelper(x,list);
-        }
-        return list;
     }
 
 }
