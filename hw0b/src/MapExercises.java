@@ -32,7 +32,7 @@ public class MapExercises {
     public static Map<String, Integer> countWords(List<String> words) {
         Map<String,Integer> L = new TreeMap<>() ;
         for (String i : words){
-            if (!L.keySet().contains(i)){
+            if (!L.containsKey(i)){
                 L.put(i,1);
             }
             else {
