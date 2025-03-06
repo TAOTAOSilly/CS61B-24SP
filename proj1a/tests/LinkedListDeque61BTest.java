@@ -56,5 +56,32 @@ public class LinkedListDeque61BTest {
          assertThat(lld1.toList()).containsExactly(-2, -1, 0, 1, 2).inOrder();
      }
 
+     @Test
+     public void hugeaddfirstandlasttest(){
+         Deque61B<Integer> lld1 = new LinkedListDeque61B<>();
+         long starttime = System.currentTimeMillis();
+         for (int i = 0; i < 100000; i++){
+             lld1.addFirst(i);
+         }
+         long endtime = System.currentTimeMillis();
+         assertWithMessage("time is too long").that(endtime - starttime).isLessThan(1000);
+     }
+
     // Below, you'll write your own tests for LinkedListDeque61B.
+    @Test
+    // to test .isempty()
+    public void isEmptytest(){
+        Deque61B<Integer> lld1 = new LinkedListDeque61B();
+        assertWithMessage("the list is empty").that(lld1.isEmpty()).isTrue();
+
+        lld1.addFirst(6);
+        assertWithMessage("the list is not empty").that(lld1.isEmpty()).isFalse();
+        long starttime = System.currentTimeMillis();
+        for (int i = 0; i < 100; i++){
+            lld1.addFirst(i);
+        }
+        assertWithMessage("the list is not empty").that(lld1.isEmpty()).isFalse();
+        long endtime = System.currentTimeMillis();
+        assertWithMessage("the time is too long").that(starttime - endtime).isLessThan(1000);
+    }
 }

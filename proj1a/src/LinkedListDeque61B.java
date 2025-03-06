@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class LinkedListDeque61B<T> implements Deque61B<T> {
 
@@ -42,11 +43,22 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
 
     @Override
     public List<T> toList() {
-        return List.of();
+        List<T> returnlist = new ArrayList<>();
+        Node p = this.sentinel;
+        while (p.next != sentinel){
+            p = p.next;
+            returnlist.add(p.item);
+        }
+        return returnlist;
     }
 
     @Override
     public boolean isEmpty() {
+        Node p = this.sentinel;
+        if (p.next == sentinel){
+            return true;
+        }
+
         return false;
     }
 
