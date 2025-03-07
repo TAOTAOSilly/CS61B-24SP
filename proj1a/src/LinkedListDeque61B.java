@@ -64,26 +64,55 @@ public class LinkedListDeque61B<T> implements Deque61B<T> {
 
     @Override
     public int size() {
-        return 0;
+        return this.size;
     }
 
     @Override
     public T removeFirst() {
-        return null;
+        Node p = this.sentinel.next;
+        T removedone = p.item;
+        p = p.next;
+        sentinel.next = p;
+        p.prev = sentinel;
+        return removedone;
     }
 
     @Override
     public T removeLast() {
-        return null;
+        Node p = this.sentinel.prev;
+        T removedone = p.item;
+        p = p.prev;
+        p.next = sentinel;
+        sentinel.prev = p;
+        return removedone;
     }
 
     @Override
     public T get(int index) {
-        return null;
+        if (index > this.size){
+            System.out.print("the list have not the value to the index");
+            return null;
+        }
+        Node p = this.sentinel;
+        int pindex = 0;
+        while (true){
+            if ( pindex == index){
+                return p.item;
+            }
+            p = p.next;
+            pindex += 1;
+        }
     }
 
     @Override
     public T getRecursive(int index) {
-        return null;
+        Node p = this.sentinel;
+        return getRecusivehelper(p,index);
+    }
+    public T getRecusivehelper(Node p,int index){
+        if (index == 0){
+            return p.item;
+        }
+        return getRecusivehelper(p.next,index - 1);
     }
 }
