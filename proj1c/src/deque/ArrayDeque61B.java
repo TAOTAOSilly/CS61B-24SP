@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Objects;
 import java.lang.Math;
 
-public class ArrayDeque61B<T> implements Deque61B<T> {
+public class ArrayDeque61B<T> implements Deque61B<T>,Iterable<T> {
+
     T[] base;
     int currentsize = 8;
     int nextfirst = 0;
@@ -16,6 +17,31 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
         base = (T[]) new Object[currentsize];
     }
 
+    private class ArrayDeque61BIterator implements Iterator<T>{
+        int WizPos;
+
+        public ArrayDeque61BIterator(){
+            WizPos = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            if (size == 0){
+            }
+            return WizPos <= size - 1;
+        }
+
+        @Override
+        public T next() {
+            T returnitem = base[WizPos];
+            WizPos += 1;
+            return returnitem;
+        }
+    }
+    @Override
+    public Iterator<T> iterator(){
+        return new ArrayDeque61BIterator();
+    }
 
     public void addFirst(T x) {
         this.size += 1;
@@ -139,8 +165,14 @@ public class ArrayDeque61B<T> implements Deque61B<T> {
         throw new UnsupportedOperationException("No need to implement getRecursive for proj 1b");
     }
 
-    @Override
-    public Iterator<T> iterator() {
-        return null;
+    public static void main(String[] args) {
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+
+        ad1.addLast(1);
+        ad1.addLast(2);
+        ad1.addLast(3);
+        for (int i : ad1){
+            System.out.println(i);
+        }
     }
 }
