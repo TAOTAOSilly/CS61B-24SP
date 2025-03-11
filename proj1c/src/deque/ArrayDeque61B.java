@@ -165,14 +165,4 @@ public class ArrayDeque61B<T> implements Deque61B<T>,Iterable<T> {
         throw new UnsupportedOperationException("No need to implement getRecursive for proj 1b");
     }
 
-    public static void main(String[] args) {
-        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
-
-        ad1.addLast(1);
-        ad1.addLast(2);
-        ad1.addLast(3);
-        for (int i : ad1){
-            System.out.println(i);
-        }
-    }
 }
