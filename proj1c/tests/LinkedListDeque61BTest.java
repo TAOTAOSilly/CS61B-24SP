@@ -1,3 +1,4 @@
+import deque.ArrayDeque61B;
 import deque.Deque61B;
 import deque.LinkedListDeque61B;
 import jh61b.utils.Reflection;
@@ -22,5 +23,29 @@ public class LinkedListDeque61BTest{
         for (int i : lld1){
             System.out.println(i);
         }
+    }
+
+    @Test
+    public void testequals(){
+        Deque61B<Integer> ad1 = new ArrayDeque61B<>();
+        ad1.addLast(1);
+        ad1.addLast(2);
+        ad1.addLast(3);
+
+        Deque61B<Integer> ad2 = new ArrayDeque61B<>();
+        ad2.addLast(1);
+        ad2.addLast(2);
+        ad2.addLast(3);
+        assertThat(ad1.equals(ad2)).isTrue();
+    }
+
+    @Test
+    public void testtoString(){
+        Deque61B<Integer> ad1 = new LinkedListDeque61B();
+        assertThat(ad1.toString()).isEqualTo("{}");
+        ad1.addLast(1);
+        ad1.addLast(2);
+        ad1.addLast(3);
+        assertThat(ad1.toString()).isEqualTo("{1,2,3}");
     }
 }

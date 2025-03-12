@@ -2,7 +2,6 @@ package deque;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 import java.lang.Math;
 
 public class ArrayDeque61B<T> implements Deque61B<T>,Iterable<T> {
@@ -27,6 +26,7 @@ public class ArrayDeque61B<T> implements Deque61B<T>,Iterable<T> {
         @Override
         public boolean hasNext() {
             if (size == 0){
+                return false;
             }
             return WizPos <= size - 1;
         }
@@ -41,6 +41,47 @@ public class ArrayDeque61B<T> implements Deque61B<T>,Iterable<T> {
     @Override
     public Iterator<T> iterator(){
         return new ArrayDeque61BIterator();
+    }
+
+    public boolean contains(T t){
+        for (T i : this){
+            if (i == t) {
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof ArrayDeque61B other ){
+            if (other.size != this.size){
+                return false;
+            }
+            for (T t : this){
+                if (!other.contains(t)){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString(){
+        String returnString = "{";
+        for (T t : this){
+            returnString += t.toString();
+            returnString += ",";
+        }
+        returnString += "}";
+        if (returnString.length() != 2) {
+        StringBuilder sb = new StringBuilder(returnString);
+        sb.deleteCharAt(returnString.length() - 2);
+        returnString = sb.toString();
+        }
+        System.out.print(returnString);
+        return returnString;
     }
 
     public void addFirst(T x) {

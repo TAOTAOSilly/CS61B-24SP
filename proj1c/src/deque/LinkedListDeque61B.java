@@ -16,6 +16,7 @@ public class LinkedListDeque61B<T> implements Deque61B<T>,Iterable<T> {
         }
     }
 
+
     public class LinkedlistDeque61BIterator implements Iterator<T> {
         int WizPos;
         Node WizPointer;
@@ -53,13 +54,51 @@ public class LinkedListDeque61B<T> implements Deque61B<T>,Iterable<T> {
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
     }
+    public boolean contains(T t){
+        for (T i : this){
+            if (i == t) {
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean equals(Object o){
+        if (o instanceof LinkedListDeque61B other ){
+            if (other.size != this.size){
+                return false;
+            }
+            for (T t : this){
+                if (!other.contains(t)){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
+    @Override
+    public String toString(){
+        String returnString = "{";
+        for (T t : this){
+            returnString += t.toString();
+            returnString += ",";
+        }
+        returnString += "}";
+        if (returnString.length() != 2) {
+            StringBuilder sb = new StringBuilder(returnString);
+            sb.deleteCharAt(returnString.length() - 2);
+            returnString = sb.toString();
+        }
+        System.out.print(returnString);
+        return returnString;
+    }
     // sentinel.prev == last Node;
     @Override
     public void addFirst(T x) {
         size += 1;
         Node l = sentinel.next;
-
         sentinel.next = new Node(sentinel, x, l);
         l.prev = sentinel.next;
     }
