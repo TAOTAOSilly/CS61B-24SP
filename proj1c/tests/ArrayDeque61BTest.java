@@ -1,13 +1,9 @@
 import deque.Deque61B;
 import deque.ArrayDeque61B;
-import jh61b.utils.Reflection;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
-import javax.swing.text.html.HTMLDocument;
-import java.util.Iterator;
 
 public class ArrayDeque61BTest {
     @Test
