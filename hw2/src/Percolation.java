@@ -24,6 +24,8 @@ public class Percolation {
     }
 
     private int xyToSite(int row, int col){
+        if (row < 0 || row > n ||col < 0 || col > n )
+            throw new IllegalArgumentException("the site should be 0 ~ n - 1");
         return row * n + col;
     }
 

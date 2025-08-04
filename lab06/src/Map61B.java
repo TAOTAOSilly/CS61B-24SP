@@ -7,10 +7,8 @@ import java.util.Set;
  */
 public interface Map61B<K, V> extends Iterable<K> {
 
-    /** Associates the specified value with the specified key in this map.
-     *  If the map already contains the specified key, replaces the key's mapping
-     *  with the value specified. */
     void put(K key, V value);
+
 
     /** Returns the value to which the specified key is mapped, or null if this
      * map contains no mapping for the key. */
